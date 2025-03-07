@@ -1,0 +1,24 @@
+org 0x7c00
+times ...
+dw %~con, ah
+
+int ah
+mov eip, ah
+syscall
+xor eip, eip
+
+lw ah, lo (ax)
+mfhi $ax
+sw ax, 61h
+ori $ah, $lo (0x7c00)
+times hi
+
+int ah
+int eip
+int lo
+int ax
+int hi
+
+xor hi, hi
+syscall
+ret
